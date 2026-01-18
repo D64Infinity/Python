@@ -65,7 +65,7 @@ class PascalToPythonTranslator:
 
             # div / mod keywords proccessing
             line = re.sub(r' mod ', ' % ', line) 
-            line = re.sub(r' div ', '//', line)  
+            line = re.sub(r' div ', ' // ', line)  
 
             # is equal operator processing
             line = re.sub(r'\s=\s', ' == ', line)
@@ -297,7 +297,7 @@ begin
   writeln('Execution completed.');
 end;
 """
-
+# Pascal procedure 3 (prime nums)
 primes_pascal = """
 procedure PrimesFoo;
 
@@ -367,13 +367,13 @@ begin
 end;
 """
 
-# --- Создаём транслятор и обрабатываем все три подпрограммы ---
+# translator for 3 procedures
 translator = PascalToPythonTranslator()
 translator.translate(factorial_pascal)
 translator.translate(sum_pascal)
 translator.translate(primes_pascal)
 
-# --- Записываем результат в файл translated.py ---
+# writing in "translated.py"
 with open("translated.py", "w", encoding="utf-8") as f:
     f.write(translator.python_code)
 
